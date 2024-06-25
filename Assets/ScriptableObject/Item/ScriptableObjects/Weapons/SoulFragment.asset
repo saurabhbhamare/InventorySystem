@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36290003869c8584a83182cc6acb91b2, type: 3}
+  m_Name: SoulFragment
+  m_EditorClassIdentifier: 
+  ItemID: 16
+  ItemName: Axe
+  ItemSprite: {fileID: 21300000, guid: ec6b13a5ffa52bc45b7eeb8e5f69c6a9, type: 3}
+  ItemType: 1
+  ItemRarity: 4
+  ItemWeight: 1
+  ItemBuyingPrice: 700
+  ItemSellingPrice: 550
+  ItemDescription: This ominous shard has the power to bind and extract souls from
+    beings, storing their essence for later use or manipulation
+  ItemQuantity: 0
