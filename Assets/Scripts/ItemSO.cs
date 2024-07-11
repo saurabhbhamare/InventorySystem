@@ -14,5 +14,4 @@ public class ItemSO : ScriptableObject
     public int ItemBuyingPrice;
     public int ItemSellingPrice;
     [TextArea] public string ItemDescription;
-    public int ItemQuantity;
 }

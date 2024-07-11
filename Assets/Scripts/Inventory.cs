@@ -8,137 +8,51 @@ public class Inventory : MonoBehaviour
         [SerializeField] private ItemSOList itemSOList; 
         [SerializeField] private Transform parent;
         [SerializeField] private ItemSlot itemSlot;
-       [SerializeField] private TextMeshProUGUI inventoryWeightText;
-      
+        [SerializeField] private TextMeshProUGUI inventoryWeightText;
+    
         [SerializeField] private DescriptionPanel descriptionPanel;
-        private List<ItemSlot> itemSlotList;
-       private float inventoryWeight;
+        public Dictionary<int , ItemSlot> itemSlotList;
+        private float inventoryWeight;
         private int inventoryValue;
         private int itemID;
-    private void Start()
+    private void Awake()
     {
-        itemSlotList = new List<ItemSlot>();
-       
+       itemSlotList = new Dictionary<int, ItemSlot>();
     }
     public void AddItem()
     {
-        int randomSO = Random.Range(0, itemSOList.InventoryItems.Count);
-        itemID = itemSOList.InventoryItems[randomSO].ItemID;
+        int pickRandomSO = Random.Range(0, itemSOList.InventoryItems.Count);
+        int itemID = itemSOList.InventoryItems[pickRandomSO].ItemID;
         inventoryWeight += itemSOList.InventoryItems[itemID].ItemWeight;
-        inventoryWeightText.text = inventoryWeight.ToString();
-        //Debug.Log(" This id RandomSO " + randomSO);
-        //Debug.Log(" This is itemID " + itemID);
-        //Debug.Log(" first Item ID is " + itemID);
-        //Debug.Log(itemSlotList.Count);
-        if (itemSlotList.Count ==0)
+        if( itemSlotList.Count == 0 )
         {
-            Debug.Log("running function for the first slot");
-            ItemSlot firstItemSlot = Instantiate(itemSlot, parent.transform);
-            firstItemSlot.itemID = itemID;
-            //Debug.Log("item id " + itemID);
-            //Debug.Log("item id " + randomSO);
-            firstItemSlot.itemQuantity++;
-            firstItemSlot.itemName = itemSOList.InventoryItems[itemID].ItemName;
-            firstItemSlot.itemImage.sprite = itemSOList.InventoryItems[itemID].ItemSprite;
-            firstItemSlot.quantityText.text = firstItemSlot.itemQuantity.ToString();
-            itemSlotList.Add(firstItemSlot); 
-            Debug.Log(firstItemSlot.itemName + " ID ->" + itemID);
-            return;
+            Debug.Log(itemSOList.InventoryItems[pickRandomSO].ItemName);
+            CreateNewItemSlotUI(itemID);
         }
-        foreach (var existingSlot in itemSlotList)
+        else if (itemSlotList.TryGetValue(itemID, out var existingSlot))
         {
-            if (existingSlot.itemID == itemID)
-            {
-                existingSlot.itemQuantity++;
-                existingSlot.quantityText.text = existingSlot.itemQuantity.ToString();
-                return;
-            }
+            existingSlot.itemQuantity++;
+            Debug.Log("created a " + existingSlot.itemName + "again");
+            existingSlot.UpdateItemSlotQuantity(existingSlot.itemQuantity);
         }
+        else
+        {
+            CreateNewItemSlotUI(itemID);
+        }
+    }
+    private void CreateNewItemSlotUI(int itemID)
+    {
+        ItemSlot newItemSlot = Instantiate(itemSlot, parent.transform);   
 
-        ItemSlot spawnedItemSlot = Instantiate(itemSlot, parent.transform);
-        spawnedItemSlot.itemQuantity =1;
-        spawnedItemSlot.itemID = itemID;
-        spawnedItemSlot.itemImage.sprite = itemSOList.InventoryItems[randomSO].ItemSprite;
-        spawnedItemSlot.itemName = itemSOList.InventoryItems[randomSO].ItemName;
-        spawnedItemSlot.quantityText.text = spawnedItemSlot.itemQuantity.ToString();
-        itemSlotList.Add(spawnedItemSlot);
-        
-        Debug.Log(spawnedItemSlot.itemName+" ID ->"+ itemID);
-       
+        newItemSlot.name = itemSOList.InventoryItems[itemID].ItemName;
+        newItemSlot.itemName = itemSOList.InventoryItems[itemID].ItemName;
+        newItemSlot.itemDescription = itemSOList.InventoryItems[itemID].ItemDescription;
+        Debug.Log("newly created Item name is " + itemSOList.InventoryItems[itemID].ItemName);
+        newItemSlot.itemImage.sprite = itemSOList.InventoryItems[itemID].ItemSprite;
+        newItemSlot.itemSelllingPrice = itemSOList.InventoryItems[itemID].ItemSellingPrice;
+        newItemSlot.itemQuantity++; 
+        newItemSlot.gameObject.SetActive(true);
+        newItemSlot.UpdateItemSlotQuantity(newItemSlot.itemQuantity);
+        itemSlotList.Add(itemID, newItemSlot);
     }
 }
-
-
-
-
-
-
-//for(int i = 0; i < itemSlotList.Count; i++)
-//{
-//    if()
-//}
-
-
-
-
-//int randomNumber = Random.Range(MIN_ITEMS, MAX_ITEMS);
-//GameObject itemGameObject = Instantiate(prefab, parent.transform);
-//string itemName = itemSOList.InventoryItems[randomNumber].ItemName;
-//Sprite itemSprite = itemSOList.InventoryItems[randomNumber].ItemSprite;
-//itemGameObject.GetComponent<ItemSlot>().SetItemInfo(itemSprite, itemName);
-//itemList.Add(itemGameObject);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//-------------------------------------------------------------
-
-//public void Add()
-//{
-//    int pickRandomItemNumber = Random.Range(0, 20);
-//    ItemSO itemSO = itemSOList.InventoryItems[pickRandomItemNumber];
-
-//    for(int i = 0; i < itemList.Count; i++)
-//    {
-//        if(itemSO.name == itemList[i].name)
-//        {
-//            itemList[i].ItemQuantity++;
-//            ShowAllInventoryItems();
-//            return;
-//        }
-//    }
-//    AddItemToTheUI(itemSO);
-
-//}
-//public void ShowItemDescription(ItemSO itemSO)
-//{
-
-//}
-//public void ShowAllInventoryItems()
-//{
-
-//}
-//public void AddItemToTheUI(ItemSO itemSO)
-//{
-//    GameObject item = Instantiate(prefab, parent.transform);
-//    item.GetComponent<ItemSlot>().SetItemSO(itemSO);
-//}

@@ -7,12 +7,14 @@ using TMPro;
 public class DescriptionPanel : MonoBehaviour
 {
     [SerializeField] private Image descriptionImage;
-    [SerializeField] private TextMeshProUGUI description;
-    private ItemSlot itemSlot; 
+    [SerializeField] private TextMeshProUGUI itemDescription;
+    [SerializeField] private TextMeshProUGUI itemName; 
+   // private ItemSlot itemSlot; 
   public  void UpdateDescriptionBoxInfo(ItemSlot itemSlot)
     {
-        this.itemSlot = itemSlot; 
-        descriptionImage.sprite = this.itemSlot.itemImage.sprite;
-      //  description.text= itemSO.ItemDescription;
+        Debug.Log(itemSlot.itemName);
+         this.descriptionImage.sprite = itemSlot.itemImage.sprite;
+        this.itemName.text = itemSlot.itemName;
+        this.itemDescription.text = itemSlot.itemDescription;
     }
 }
