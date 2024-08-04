@@ -4,7 +4,7 @@ using UnityEngine;
 using System; 
 public class EventService : MonoSingletonGeneric<EventService>
 {
-    public Action OnLeftClickInventoryItem;
-    public Action OnRightClickItemInventoryItem;
+  //  public Action OnLeftClickInventoryItem;
+   // public Action OnRightClickItemInventoryItem;
 
 }

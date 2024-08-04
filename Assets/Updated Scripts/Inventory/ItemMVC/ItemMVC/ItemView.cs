@@ -11,6 +11,7 @@ public class ItemView : MonoBehaviour,IPointerClickHandler
      public  TextMeshProUGUI itemQuantityText;
      public Image itemImage;
      public ItemController itemController;
+    private bool isDescriptionPanelActive = false;
 
     private void Awake()
     {
@@ -24,7 +25,8 @@ public class ItemView : MonoBehaviour,IPointerClickHandler
     {
         if(eventData.button == PointerEventData.InputButton.Left)
         {
-            EventService.Instance.OnLeftClickInventoryItem?.Invoke();
+            //EventService.Instance.OnLeftClickInventoryItem?.Invoke();
+            HandleLeftClickOnItem();
         }
     }
     public ItemController GetItemController()
@@ -33,7 +35,14 @@ public class ItemView : MonoBehaviour,IPointerClickHandler
     }
     public void HandleLeftClickOnItem()
     {
-        UIService.Instance.itemDescriptionPanel.gameObject.SetActive(true);
+        isDescriptionPanelActive = !isDescriptionPanelActive;
+        UIService.Instance.itemDescriptionPanel.gameObject.SetActive(isDescriptionPanelActive);
+        UIService.Instance.itemDescriptionPanel.UpdateItemDescriptionPanelInfo(this.GetItemController().GetItemModel().itemName,
+            itemImage.sprite, this.GetItemController().GetItemModel().itemDescription);
         //UIService.Instance.itemDescriptionPanel.
+    }
+    public void SetItemController(ItemController itemController)
+    {
+        this.itemController = itemController;
     }
 }

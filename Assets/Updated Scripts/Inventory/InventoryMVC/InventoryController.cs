@@ -25,11 +25,15 @@ public class InventoryController
         {
             // Create a new item slot
             ItemView itemSlot = GameObject.Instantiate<ItemView>(itemView);
-            itemSlot.itemImage.sprite = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemSprite;
-
             ItemModel itemModel = new ItemModel();
             ItemController itemController = new ItemController(itemSlot, itemModel);
+            itemSlot.SetItemController(itemController);
+            itemSlot.itemImage.sprite = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemSprite;
+            itemSlot.GetItemController().GetItemModel().itemName = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemName;
+            itemSlot.GetItemController().GetItemModel().itemDescription = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemDescription;
             inventoryModel.itemControllerList.Add(itemID, itemController);
+
+           
 
             itemSlot.transform.SetParent(inventoryView.parentTransform.transform, false);
             itemSlot.transform.position = inventoryView.parentTransform.transform.position;
@@ -39,7 +43,7 @@ public class InventoryController
     {
 
     }
-    public int GenerateRandomItem()
+    private int GenerateRandomItem()
     {
         int randomNumber = Random.Range(0, inventoryModel.GetItemSOList().InventoryItems.Count);
         return randomNumber;
