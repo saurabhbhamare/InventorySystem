@@ -5,13 +5,13 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-
 public class ItemView : MonoBehaviour,IPointerClickHandler
 {
      public  TextMeshProUGUI itemQuantityText;
      public Image itemImage;
      public ItemController itemController;
-    private bool isDescriptionPanelActive = false;
+     private bool isDescriptionPanelActive = false;
+     private bool isItemSellBoxPanelActive = false;
 
     private void Awake()
     {
@@ -28,6 +28,10 @@ public class ItemView : MonoBehaviour,IPointerClickHandler
             //EventService.Instance.OnLeftClickInventoryItem?.Invoke();
             HandleLeftClickOnItem();
         }
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            HandleRightClickOnItem();
+        }
     }
     public ItemController GetItemController()
     {
@@ -40,6 +44,12 @@ public class ItemView : MonoBehaviour,IPointerClickHandler
         UIService.Instance.itemDescriptionPanel.UpdateItemDescriptionPanelInfo(this.GetItemController().GetItemModel().itemName,
             itemImage.sprite, this.GetItemController().GetItemModel().itemDescription);
         //UIService.Instance.itemDescriptionPanel.
+    }
+    public void HandleRightClickOnItem()
+    {
+        UIService.Instance.sellItemBox.gameObject.SetActive(true);
+        UIService.Instance.sellItemBox.UpdateItemSellBoxInfo(itemImage.sprite,GetItemController().GetItemModel().itemQuantity);
+        UIService.Instance.sellItemBox.SetItemModelForSellBox(this.GetItemController().GetItemModel());
     }
     public void SetItemController(ItemController itemController)
     {

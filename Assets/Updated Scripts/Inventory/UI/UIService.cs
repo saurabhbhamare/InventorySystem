@@ -6,4 +6,5 @@ using System;
 public class UIService : MonoSingletonGeneric<UIService>
 {
     public  ItemDescriptionPanelView itemDescriptionPanel;
+    public InventoryItemSellBox sellItemBox;
 }
