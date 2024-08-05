@@ -8,36 +8,47 @@ public class InventoryItemSellBox : MonoBehaviour
 {
     public Button closeInventorySellBox;
     public Image sellBoxItemImage;
+    public TextMeshProUGUI itemNameText;
     public TextMeshProUGUI itemQuantityText;
     public ItemModel itemModel;
-    public int sellQuantity;
+    public int itemSellQuantity;
     
     public void CloseInventoryItemSellBox()
     {
         this.gameObject.SetActive(false);
     }
-    public void UpdateItemSellBoxInfo(Sprite itemSprite, int itemQuantity)
+    private void Start()
+    {
+        itemSellQuantity = 1; 
+    }
+    public void UpdateItemSellBoxInfo(Sprite itemSprite, int itemQuantity, string itemName)
     {
         sellBoxItemImage.sprite = itemSprite;
-        itemQuantityText.text = itemQuantity.ToString();
+        itemNameText.text = itemName;
+        itemSellQuantity = 1;
+        itemQuantityText.text = itemSellQuantity.ToString();
     }
     public void IncreaseItemSellQuantity()
     {
-      //  if( >)
-        itemModel.itemQuantity++;
+      //   = itemModel.itemQuantity;
+        if (itemSellQuantity >= itemModel.itemQuantity)
+        {
+            return; 
+        }   
+        itemSellQuantity++;
       
-        itemQuantityText.text = itemModel.itemQuantity.ToString();
+        itemQuantityText.text = itemSellQuantity.ToString();
         //sellQuantity = 
     }
     public void DecreaseItemSellQuantity()
     {
-        if (itemModel.itemQuantity <= 1)
+        if (itemSellQuantity <= 1)
         {
             Debug.Log("reached min quantity");
             return;
         }
-        itemModel.itemQuantity--;
-        itemQuantityText.text = itemModel.itemQuantity.ToString();
+        itemSellQuantity--;
+        itemQuantityText.text = itemSellQuantity.ToString();
     }
     public void SetItemModelForSellBox(ItemModel itemModel)
     {
@@ -45,6 +56,7 @@ public class InventoryItemSellBox : MonoBehaviour
     }
     public void SellItem()
     {
-      //  itemModel.itemQuantity -=
+        itemModel.itemQuantity -= itemSellQuantity;
+        itemModel.GetItemController().itemView.itemQuantityText.text = itemModel.itemQuantity.ToString();
     }
 }

@@ -27,11 +27,13 @@ public class InventoryController
             ItemView itemSlot = GameObject.Instantiate<ItemView>(itemView);
             ItemModel itemModel = new ItemModel();
             ItemController itemController = new ItemController(itemSlot, itemModel);
+            itemModel.SetItemController(itemController);
             itemSlot.SetItemController(itemController);
             itemModel.itemName = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemName;
             itemSlot.itemImage.sprite = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemSprite;
           //  itemSlot.GetItemController().GetItemModel().itemName = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemName;
-            itemSlot.GetItemController().GetItemModel().itemDescription = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemDescription;
+         //   itemSlot.GetItemController().GetItemModel().itemDescription = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemDescription;
+            itemModel.itemDescription = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemDescription;
             inventoryModel.itemControllerList.Add(itemID, itemController);
 
             itemSlot.transform.SetParent(inventoryView.parentTransform.transform, false);
@@ -47,4 +49,14 @@ public class InventoryController
         int randomNumber = Random.Range(0, inventoryModel.GetItemSOList().InventoryItems.Count);
         return randomNumber;
     }
+    public void UpdateInventoryWeight()
+    {
+
+    }
+    public void UpdateInventoryCurreny()
+    {
+
+
+    }
+
 }

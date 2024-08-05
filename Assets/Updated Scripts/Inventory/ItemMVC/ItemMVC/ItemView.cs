@@ -12,7 +12,6 @@ public class ItemView : MonoBehaviour,IPointerClickHandler
      public ItemController itemController;
      private bool isDescriptionPanelActive = false;
      private bool isItemSellBoxPanelActive = false;
-
     private void Awake()
     {
         itemQuantityText.text = 1.ToString();
@@ -48,7 +47,7 @@ public class ItemView : MonoBehaviour,IPointerClickHandler
     public void HandleRightClickOnItem()
     {
         UIService.Instance.sellItemBox.gameObject.SetActive(true);
-        UIService.Instance.sellItemBox.UpdateItemSellBoxInfo(itemImage.sprite,GetItemController().GetItemModel().itemQuantity);
+        UIService.Instance.sellItemBox.UpdateItemSellBoxInfo(itemImage.sprite,GetItemController().GetItemModel().itemQuantity, GetItemController().GetItemModel().itemName);
         UIService.Instance.sellItemBox.SetItemModelForSellBox(this.GetItemController().GetItemModel());
     }
     public void SetItemController(ItemController itemController)
