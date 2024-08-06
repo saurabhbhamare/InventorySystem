@@ -55,13 +55,20 @@ public class InventoryItemSellBox : MonoBehaviour
     }
     public void SellItem()
      {
+        float decreasedItemWeight; 
         itemModel.itemQuantity -= itemSellQuantity;
         if(itemModel.itemQuantity == 0)
         {
             itemModel.GetItemController().itemView.gameObject.SetActive(false);
         }
+        decreasedItemWeight = itemModel.itemWeight * itemSellQuantity;
+        Debug.Log("weight which is going to be decreased is " + decreasedItemWeight);
         itemModel.GetItemController().itemView.itemQuantityText.text = itemModel.itemQuantity.ToString();
-        this.gameObject.SetActive(false); 
-        
+        this.gameObject.SetActive(false);
+        InventoryService.Instance.GetInventoryView().GetInventoryController().inventoryModel.inventoryWeight -= decreasedItemWeight;
+        float updatedItemWeight = InventoryService.Instance.GetInventoryView().GetInventoryController().inventoryModel.inventoryWeight;
+      InventoryService.Instance.GetInventoryView().GetInventoryController().UpdateInventoryWeight(updatedItemWeight);
+
+
     }
 }

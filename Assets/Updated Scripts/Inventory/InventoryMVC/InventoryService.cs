@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryService : MonoBehaviour
+public class InventoryService : MonoSingletonGeneric<InventoryService>
 {
     [SerializeField] private InventoryView inventoryView;
     [SerializeField] private ItemSOList itemSOList;
@@ -15,5 +15,9 @@ public class InventoryService : MonoBehaviour
     {
         InventoryModel inventoryModel = new InventoryModel(itemSOList);
         InventoryController inventoryController = new InventoryController(inventoryModel, inventoryView,itemSOList); 
+    }
+    public InventoryView GetInventoryView()
+    {
+        return inventoryView;
     }
 }

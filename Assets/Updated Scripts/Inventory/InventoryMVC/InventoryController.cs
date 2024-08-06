@@ -33,6 +33,7 @@ public class InventoryController
             itemModel.SetItemController(itemController);
             itemSlot.SetItemController(itemController);
             itemModel.itemName = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemName;
+            itemModel.itemWeight = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemWeight;
             itemSlot.itemImage.sprite = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemSprite;
           //  itemSlot.GetItemController().GetItemModel().itemName = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemName;
          //   itemSlot.GetItemController().GetItemModel().itemDescription = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemDescription;
@@ -56,12 +57,12 @@ public class InventoryController
     }
     public void UpdateInventoryWeight(float itemWeight)
     {
-        inventoryView.GetInventoryWeightTextGUI().text = itemWeight.ToString();
+        inventoryView.GetInventoryWeightTextGUI().text = "Weight : "+itemWeight.ToString();
     }
     public void UpdateInventoryCurreny()
     {
 
 
     }
-
+    
 }
