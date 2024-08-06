@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SoulFragment
   m_EditorClassIdentifier: 
   ItemID: 16
-  ItemName: Axe
+  ItemName: SoulFragment
   ItemSprite: {fileID: 21300000, guid: ec6b13a5ffa52bc45b7eeb8e5f69c6a9, type: 3}
   ItemType: 1
   ItemRarity: 4
@@ -22,4 +22,3 @@ MonoBehaviour:
   ItemSellingPrice: 550
   ItemDescription: This ominous shard has the power to bind and extract souls from
     beings, storing their essence for later use or manipulation
-  ItemQuantity: 0

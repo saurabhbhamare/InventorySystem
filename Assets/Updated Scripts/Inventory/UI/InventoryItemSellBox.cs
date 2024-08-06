@@ -30,7 +30,6 @@ public class InventoryItemSellBox : MonoBehaviour
     }
     public void IncreaseItemSellQuantity()
     {
-      //   = itemModel.itemQuantity;
         if (itemSellQuantity >= itemModel.itemQuantity)
         {
             return; 
@@ -55,8 +54,14 @@ public class InventoryItemSellBox : MonoBehaviour
         this.itemModel = itemModel;
     }
     public void SellItem()
-    {
+     {
         itemModel.itemQuantity -= itemSellQuantity;
+        if(itemModel.itemQuantity == 0)
+        {
+            itemModel.GetItemController().itemView.gameObject.SetActive(false);
+        }
         itemModel.GetItemController().itemView.itemQuantityText.text = itemModel.itemQuantity.ToString();
+        this.gameObject.SetActive(false); 
+        
     }
 }

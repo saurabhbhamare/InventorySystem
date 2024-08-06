@@ -20,6 +20,8 @@ public class InventoryView : MonoBehaviour
     {
         this.inventoryController = inventoryController; 
     }
-
-
+    public TextMeshProUGUI GetInventoryWeightTextGUI()
+    {
+        return inventoryWeightText;
+    }
 }

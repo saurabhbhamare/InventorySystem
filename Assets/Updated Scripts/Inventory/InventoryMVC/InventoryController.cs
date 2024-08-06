@@ -18,8 +18,11 @@ public class InventoryController
 
         if (inventoryModel.itemControllerList.TryGetValue(itemID, out var existingSlot))
         {
+            existingSlot.itemView.gameObject.SetActive(true);
             existingSlot.GetItemModel().itemQuantity++;
             existingSlot.itemView.itemQuantityText.text = existingSlot.GetItemModel().itemQuantity.ToString();
+            this.inventoryModel.inventoryWeight += inventoryModel.itemSOList.InventoryItems[itemID].ItemWeight;
+            UpdateInventoryWeight(inventoryModel.inventoryWeight);
         }
         else
         {
@@ -38,20 +41,22 @@ public class InventoryController
 
             itemSlot.transform.SetParent(inventoryView.parentTransform.transform, false);
             itemSlot.transform.position = inventoryView.parentTransform.transform.position;
+            this.inventoryModel.inventoryWeight += inventoryModel.itemSOList.InventoryItems[itemID].ItemWeight;
+            UpdateInventoryWeight(inventoryModel.inventoryWeight);
         }
     }
-    private void RemoveItemFromTheInventory()
+    private void RemoveItemFromTheInventory(ItemController itemController)
     {
-
+        
     }
     private int GenerateRandomItem()
     {
         int randomNumber = Random.Range(0, inventoryModel.GetItemSOList().InventoryItems.Count);
         return randomNumber;
     }
-    public void UpdateInventoryWeight()
+    public void UpdateInventoryWeight(float itemWeight)
     {
-
+        inventoryView.GetInventoryWeightTextGUI().text = itemWeight.ToString();
     }
     public void UpdateInventoryCurreny()
     {
