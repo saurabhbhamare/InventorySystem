@@ -9,13 +9,6 @@ public class ItemDescriptionPanelView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemDescriptiontext;
-
-   // public ItemView itemView;
-
-    //public void ShowItemDescriptionPanel()
-    //{
-    //    this.gameObject.SetActive(true);
-    //}
     public void UpdateItemDescriptionPanelInfo(string itemName, Sprite itemSprite, string itemDescription)
     {
         this.itemName.text = itemName;
@@ -23,8 +16,4 @@ public class ItemDescriptionPanelView : MonoBehaviour
         this.itemDescriptiontext.text = itemDescription;
             
     }
-    //public void HideItemDescriptionPanel()
-    //{
-    //    this.gameObject.SetActive(false);
-    //}
 }

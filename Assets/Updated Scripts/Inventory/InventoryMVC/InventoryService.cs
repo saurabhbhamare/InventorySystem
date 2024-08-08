@@ -20,4 +20,9 @@ public class InventoryService : MonoSingletonGeneric<InventoryService>
     {
         return inventoryView;
     }
+    public ItemSOList GetItemSOList()
+    {
+        return itemSOList;
+    }
+
 }

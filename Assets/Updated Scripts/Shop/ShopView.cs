@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class ShopView : MonoBehaviour
 {
-  
+    public List<ShopItem> shopItemList; 
+    
 }
