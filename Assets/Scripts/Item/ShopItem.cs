@@ -8,20 +8,18 @@ public class ShopItem : MonoBehaviour,IPointerClickHandler
 {
     public int itemID;
     public string itemName;
-    //public ItemSO itemSO;
     public Image itemImage;
-   // public List<ShopItem> shopItemList;
+    public List<ShopItem> shopItemList;
 
     private void Start()
     {
-       // itemImage.sprite = InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemSprite;
+        itemImage.sprite = InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemSprite;
     }
-
     public void OnPointerClick(PointerEventData eventData)
     {
        if(eventData.button == PointerEventData.InputButton.Right)
         {
-
+            ShopService.Instance.buyShopItemBox.gameObject.SetActive(true);
         }
     }
 

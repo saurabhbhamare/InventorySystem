@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopService : MonoBehaviour
+public class ShopService : MonoSingletonGeneric<ShopService>
 {
     //public ShopDescriptionPanel shopDescriptionPanel;
     [SerializeField] private ShopView shopView; 
+    public BuyShopItemBox buyShopItemBox; 
     public ShopItem shopItem; 
 
     public void Start()
@@ -15,7 +16,6 @@ public class ShopService : MonoBehaviour
     private void CreateShopSystem()
     {
         ShopModel shopModel = new ShopModel(shopItem);
-        ShopController shopController = new ShopController(shopModel, shopView,shopItem);
-        
+        ShopController shopController = new ShopController(shopModel, shopView,shopItem);     
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShopView : MonoBehaviour
 {
-    public List<ShopItem> shopItemList; 
+    public List<ShopItem> shopItemList;
+    public Transform contentArea;
     
 }
