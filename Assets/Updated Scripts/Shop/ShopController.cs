@@ -12,11 +12,9 @@ public class ShopController
         this.shopModel = shopModel;
         this.shopView = shopView;
         CreateShopItemSlots(shopItem);
-        
     }
     public void CreateShopItemSlots(ShopItem shopItem)
     {
-     
         for (int i = 0; i < 10; i++)
         {
             int randomItemID;

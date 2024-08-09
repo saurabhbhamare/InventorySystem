@@ -25,6 +25,7 @@ public class MainMenuButtons : MonoBehaviour
         inventory.SetActive(inventoryRunning);
         shopRunning = false;
         shop.SetActive(false);
+        UIService.Instance.UpdateCurrencyPanelVisibility(inventoryRunning);
     }
     public void DisplayShop()
     {
@@ -32,5 +33,6 @@ public class MainMenuButtons : MonoBehaviour
         shop.SetActive(shopRunning);
         inventoryRunning = false;
         inventory.SetActive(false);
+        UIService.Instance.UpdateCurrencyPanelVisibility(shopRunning);
     }
 }

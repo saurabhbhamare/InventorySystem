@@ -28,6 +28,8 @@ public class ShopItem : MonoBehaviour,IPointerClickHandler
        if(eventData.button == PointerEventData.InputButton.Right)
         {
             ShopService.Instance.buyShopItemBox.gameObject.SetActive(true);
+            ShopService.Instance.buyShopItemBox.buyItemImage.sprite = InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemSprite;
+            ShopService.Instance.buyShopItemBox.itemNameText.text = InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemName.ToString();
         }
     }
 
