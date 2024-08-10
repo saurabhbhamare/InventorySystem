@@ -7,9 +7,10 @@ using TMPro;
 public class BuyShopItemBox : MonoBehaviour
 {
     public Image buyItemImage;
-    public int  itemBuyQuantity;
+    public int itemBuyQuantity;
     public TextMeshProUGUI itemBuyQuantityText;
-    public TextMeshProUGUI itemNameText; 
+    public TextMeshProUGUI itemNameText;
+    ShopItem shopItem;
 
 
     private void Start()
@@ -18,29 +19,40 @@ public class BuyShopItemBox : MonoBehaviour
         itemBuyQuantityText.text = itemBuyQuantity.ToString();
 
     }
+    public void SetShopItem(ShopItem shopItem)
+    {
+        this.shopItem = shopItem;
+    }
     public void IncreaseItemBuyQuantity()
     {
-        //if (itemBuyQuantity >= ShopService.Instance.shopModel.shopItemList.itemQuantity)
-        //{
-        //    return;
-        //}
-        //itemBuyQuantity++;
+      
+        itemBuyQuantity++;
 
-        //itemBuyQuantity.text = itemBuyQuantity.ToString();
+        itemBuyQuantityText.text = itemBuyQuantity.ToString();
         //sellQuantity =
+
     }
     public void DecreaseItemBuyQuantity()
     {
-        //if (itemBuyQuantity <= 1)
-        //{
-        //    Debug.Log("reached min quantity");
-        //    return;
-        //}
-        //itemSellQuantity--;
-        //itemQuantityText.text = itemSellQuantity.ToString();
+        if (itemBuyQuantity <= 1)
+        {
+            Debug.Log("reached min quantity");
+            return;
+        }
+        itemBuyQuantity--;
+        itemBuyQuantityText.text = itemBuyQuantity.ToString();
     }
     public void CloseShopItemBuyBox()
     {
         this.gameObject.SetActive(false);
     }
+    public void BuyItemButton()
+    {
+        shopItem.itemQuantity -= itemBuyQuantity;
+        // itemBuyQuantityText.text = shopItem.itemQuantity.ToString();
+        shopItem.itemQuantityText.text = shopItem.itemQuantity.ToString();
+        this.gameObject.SetActive(false);
+    }
+
+    
 }

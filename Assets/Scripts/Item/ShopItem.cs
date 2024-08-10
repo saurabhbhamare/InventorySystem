@@ -19,7 +19,7 @@ public class ShopItem : MonoBehaviour,IPointerClickHandler
     private void Start()
     {
        // itemImage.sprite = InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemSprite;
-        itemQuantity = 99;
+        itemQuantity = 999;
         itemQuantityText.text = itemQuantity.ToString();
         buyingPriceText.text = InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemSellingPrice.ToString();
     }
@@ -30,8 +30,13 @@ public class ShopItem : MonoBehaviour,IPointerClickHandler
             ShopService.Instance.buyShopItemBox.gameObject.SetActive(true);
             ShopService.Instance.buyShopItemBox.buyItemImage.sprite = InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemSprite;
             ShopService.Instance.buyShopItemBox.itemNameText.text = InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemName.ToString();
+            ShopService.Instance.buyShopItemBox.SetShopItem(this);
+            
         }
     }
-
+    public int GetItemQuantity()
+    {
+        return itemQuantity;
+    }
 }
 

@@ -67,7 +67,8 @@ public class InventoryItemSellBox : MonoBehaviour
         this.gameObject.SetActive(false);
         InventoryService.Instance.GetInventoryView().GetInventoryController().inventoryModel.inventoryWeight -= decreasedItemWeight;
         float updatedItemWeight = InventoryService.Instance.GetInventoryView().GetInventoryController().inventoryModel.inventoryWeight;
-      InventoryService.Instance.GetInventoryView().GetInventoryController().UpdateInventoryWeight(updatedItemWeight);
+        InventoryService.Instance.GetInventoryView().GetInventoryController().UpdateInventoryWeight(updatedItemWeight);
+        UIService.Instance.playerCurrency.IncreaseCoinValue(itemSellQuantity * itemModel.itemSellingPrice);
 
 
     }

@@ -314,13 +314,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 761107916}
+        m_TargetAssemblyTypeName: BuyShopItemBox, Assembly-CSharp
+        m_MethodName: BuyItemButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -601,7 +601,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 52190289}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999154
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1834,7 +1834,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000128661495, y: -0.000018567}
+  m_AnchoredPosition: {x: -0.000045759472, y: -0.000018567}
   m_SizeDelta: {x: -1564.699, y: 416.6}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &484789800
@@ -3349,6 +3349,7 @@ GameObject:
   - component: {fileID: 964299726}
   - component: {fileID: 964299725}
   - component: {fileID: 964299724}
+  - component: {fileID: 964299727}
   m_Layer: 5
   m_Name: PlayerCurrencyPanel
   m_TagString: Untagged
@@ -3415,6 +3416,20 @@ RectTransform:
   m_AnchoredPosition: {x: 651, y: 274.708}
   m_SizeDelta: {x: -1455.503, y: -811.204}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &964299727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964299722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c4ce72d15b5844bb026ecb6b4c9df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pCurrency: 0
+  playerCurrencyText: {fileID: 1107020588}
 --- !u!1 &1019532136
 GameObject:
   m_ObjectHideFlags: 0
@@ -5917,6 +5932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDescriptionPanel: {fileID: 1902317601}
   sellItemBox: {fileID: 390278406}
+  playerCurrency: {fileID: 964299727}
 --- !u!4 &1635552905
 Transform:
   m_ObjectHideFlags: 0

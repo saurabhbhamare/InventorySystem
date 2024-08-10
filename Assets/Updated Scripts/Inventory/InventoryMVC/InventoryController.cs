@@ -35,20 +35,17 @@ public class InventoryController
             itemModel.itemName = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemName;
             itemModel.itemWeight = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemWeight;
             itemSlot.itemImage.sprite = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemSprite;
-          //  itemSlot.GetItemController().GetItemModel().itemName = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemName;
-         //   itemSlot.GetItemController().GetItemModel().itemDescription = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemDescription;
             itemModel.itemDescription = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemDescription;
+            itemModel.itemBuyingPrice = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemBuyingPrice;
+            itemModel.itemSellingPrice = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemSellingPrice;
             inventoryModel.itemControllerList.Add(itemID, itemController);
 
             itemSlot.transform.SetParent(inventoryView.parentTransform.transform, false);
             itemSlot.transform.position = inventoryView.parentTransform.transform.position;
             this.inventoryModel.inventoryWeight += inventoryModel.itemSOList.InventoryItems[itemID].ItemWeight;
             UpdateInventoryWeight(inventoryModel.inventoryWeight);
+            
         }
-    }
-    private void RemoveItemFromTheInventory(ItemController itemController)
-    {
-        
     }
     private int GenerateRandomItem()
     {
@@ -58,11 +55,6 @@ public class InventoryController
     public void UpdateInventoryWeight(float itemWeight)
     {
         inventoryView.GetInventoryWeightTextGUI().text = "Weight : "+itemWeight.ToString();
-    }
-    public void UpdateInventoryCurreny()
-    {
-
-
     }
     
 }

@@ -8,7 +8,9 @@ public class ItemModel
     public string itemName;
     public string itemDescription;
     public ItemController itemController;
-    public float itemWeight; 
+    public float itemWeight;
+    public int itemBuyingPrice;
+    public int itemSellingPrice; 
     public ItemModel()
     {
         itemQuantity = 1; 
