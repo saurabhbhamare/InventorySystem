@@ -6,18 +6,25 @@ using TMPro;
 
 public class BuyShopItemBox : MonoBehaviour
 {
-    public Image buyItemImage;
-    public int itemBuyQuantity;
-    public TextMeshProUGUI itemBuyQuantityText;
-    public TextMeshProUGUI itemNameText;
-    ShopItem shopItem;
+    [SerializeField] private Image buyItemImage;  // public changed to serializefield private
+    private int itemBuyQuantity;                            //changed public to private
+    [SerializeField] private TextMeshProUGUI itemBuyQuantityText;
+    [SerializeField] private TextMeshProUGUI itemNameText;
+    private ShopItem shopItem;
 
 
     private void Start()
     {
         itemBuyQuantity = 1;
         itemBuyQuantityText.text = itemBuyQuantity.ToString();
-
+    }
+    public Image GetBuyItemImage()
+    {
+        return buyItemImage;
+    }
+    public TextMeshProUGUI GetItemNameText()
+    {
+        return itemNameText;
     }
     public void SetShopItem(ShopItem shopItem)
     {
@@ -27,10 +34,8 @@ public class BuyShopItemBox : MonoBehaviour
     {
       
         itemBuyQuantity++;
-
         itemBuyQuantityText.text = itemBuyQuantity.ToString();
         //sellQuantity =
-
     }
     public void DecreaseItemBuyQuantity()
     {
@@ -46,13 +51,13 @@ public class BuyShopItemBox : MonoBehaviour
     {
         this.gameObject.SetActive(false);
     }
-    public void BuyItemButton()
-    {
-        shopItem.itemQuantity -= itemBuyQuantity;
-        // itemBuyQuantityText.text = shopItem.itemQuantity.ToString();
-        shopItem.itemQuantityText.text = shopItem.itemQuantity.ToString();
-        this.gameObject.SetActive(false);
-    }
+        public void BuyItemButton()
+        {
+            shopItem.itemQuantity -= itemBuyQuantity;
+            // itemBuyQuantityText.text = shopItem.itemQuantity.ToString();
+            shopItem.itemQuantityText.text = shopItem.itemQuantity.ToString();
+            this.gameObject.SetActive(false);
+        }
 
     
 }

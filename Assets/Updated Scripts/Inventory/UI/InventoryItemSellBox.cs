@@ -6,14 +6,14 @@ using TMPro;
 
 public class InventoryItemSellBox : MonoBehaviour
 {
-    public Button closeInventorySellBox;
-    public Image sellBoxItemImage;
-    public TextMeshProUGUI itemNameText;
-    public TextMeshProUGUI itemQuantityText;
-    public ItemModel itemModel;
-    public int itemSellQuantity;
+    [SerializeField] private Button closeInventorySellBox;
+    [SerializeField] private Image sellBoxItemImage;
+    [SerializeField] private TextMeshProUGUI itemNameText;
+    [SerializeField] private TextMeshProUGUI itemQuantityText;
+    private ItemModel itemModel;
+    private int itemSellQuantity;
     
-    public void CloseInventoryItemSellBox()
+    private void CloseInventoryItemSellBox()
     {
         this.gameObject.SetActive(false);
     }
@@ -21,7 +21,7 @@ public class InventoryItemSellBox : MonoBehaviour
     {
         itemSellQuantity = 1; 
     }
-    public void UpdateItemSellBoxInfo(Sprite itemSprite, int itemQuantity, string itemName)
+    public void UpdateItemSellBoxInfo(Sprite itemSprite, int itemQuantity, string itemName) 
     {
         sellBoxItemImage.sprite = itemSprite;
         itemNameText.text = itemName;

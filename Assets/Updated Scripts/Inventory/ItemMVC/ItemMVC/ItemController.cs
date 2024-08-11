@@ -22,4 +22,16 @@ public class ItemController
     {
         return itemModel;
     }
+    public void HandleInventoryItemLeftClick()
+    {
+        itemModel.isDescriptionPanelActive = !itemModel.isDescriptionPanelActive;
+
+        UIService.Instance.itemDescriptionPanel.gameObject.SetActive(itemModel.isDescriptionPanelActive);
+        UIService.Instance.itemDescriptionPanel.UpdateItemDescriptionPanelInfo(itemModel.itemName,
+            itemView.itemImage.sprite, itemModel.itemDescription);
+    }
+    public void HandleInventoryItemRightClick()
+    {
+
+    }
 }

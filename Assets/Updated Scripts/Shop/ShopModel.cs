@@ -11,11 +11,6 @@ public class ShopModel
         this.shopItem = shopItem;
         shopItemList = new List<ShopItem>();
     }
-
-    //public List<ShopItem> GetShopItemList()
-    //{
-    //    return shopItemList;
-    //}
     public ShopItem GetShopItem()
     {
         return shopItem;

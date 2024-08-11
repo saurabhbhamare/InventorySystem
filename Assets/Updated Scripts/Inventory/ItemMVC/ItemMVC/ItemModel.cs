@@ -10,7 +10,9 @@ public class ItemModel
     public ItemController itemController;
     public float itemWeight;
     public int itemBuyingPrice;
-    public int itemSellingPrice; 
+    public int itemSellingPrice;
+    public bool isDescriptionPanelActive = false;
+    private bool isItemSellBoxPanelActive = false;
     public ItemModel()
     {
         itemQuantity = 1; 
@@ -22,5 +24,9 @@ public class ItemModel
     public ItemController GetItemController()
     {
         return this.itemController; 
+    }
+    public bool GetDescriptionPanelVisibilityStatus()
+    {
+        return isDescriptionPanelActive;
     }
 }

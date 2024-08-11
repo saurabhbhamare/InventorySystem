@@ -6,8 +6,6 @@ public class InventoryService : MonoSingletonGeneric<InventoryService>
 {
     [SerializeField] private InventoryView inventoryView;
     [SerializeField] private ItemSOList itemSOList;
-  
-
     private void Start()
     {
         CreateInventory();

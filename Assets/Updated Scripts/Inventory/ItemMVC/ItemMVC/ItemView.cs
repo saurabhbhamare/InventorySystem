@@ -10,8 +10,9 @@ public class ItemView : MonoBehaviour,IPointerClickHandler
      public  TextMeshProUGUI itemQuantityText;
      public Image itemImage;
      public ItemController itemController;
-     private bool isDescriptionPanelActive = false;
-     private bool isItemSellBoxPanelActive = false;
+   //  private bool isDescriptionPanelActive = false;
+   //  private bool isItemSellBoxPanelActive = false;
+    [SerializeField] private InventoryItemSellBox inventoryItemSellBox; // created a new inv sell box 
     private void Awake()
     {
         itemQuantityText.text = 1.ToString();
@@ -38,17 +39,20 @@ public class ItemView : MonoBehaviour,IPointerClickHandler
     }
     public void HandleLeftClickOnItem()
     {
-        isDescriptionPanelActive = !isDescriptionPanelActive;
-        UIService.Instance.itemDescriptionPanel.gameObject.SetActive(isDescriptionPanelActive);
-        UIService.Instance.itemDescriptionPanel.UpdateItemDescriptionPanelInfo(this.GetItemController().GetItemModel().itemName,
-            itemImage.sprite, this.GetItemController().GetItemModel().itemDescription);
-        //UIService.Instance.itemDescriptionPanel.
+        //itemController.GetItemModel().isDescriptionPanelActive = !itemController.GetItemModel().isDescriptionPanelActive;
+
+        //UIService.Instance.itemDescriptionPanel.gameObject.SetActive(itemController.GetItemModel().isDescriptionPanelActive);
+        //UIService.Instance.itemDescriptionPanel.UpdateItemDescriptionPanelInfo(this.GetItemController().GetItemModel().itemName,
+        //    itemImage.sprite, this.GetItemController().GetItemModel().itemDescription);
+
+        itemController.HandleInventoryItemLeftClick();
     }
     public void HandleRightClickOnItem()
     {
         UIService.Instance.sellItemBox.gameObject.SetActive(true);
-        UIService.Instance.sellItemBox.UpdateItemSellBoxInfo(itemImage.sprite,GetItemController().GetItemModel().itemQuantity, GetItemController().GetItemModel().itemName);
+        UIService.Instance.sellItemBox.UpdateItemSellBoxInfo(itemImage.sprite, GetItemController().GetItemModel().itemQuantity, GetItemController().GetItemModel().itemName);
         UIService.Instance.sellItemBox.SetItemModelForSellBox(this.GetItemController().GetItemModel());
+    //    itemController.HandleInventoryItemLeftClick();
     }
     public void SetItemController(ItemController itemController)
     {
