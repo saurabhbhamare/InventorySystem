@@ -30,8 +30,8 @@ public class InventoryController
            ItemView itemSlot = GameObject.Instantiate<ItemView>(itemView);
             ItemModel itemModel = new ItemModel();
             ItemController itemController = new ItemController(itemSlot, itemModel);
-            itemSlot.SetItemController(itemController);
             itemModel.SetItemController(itemController);
+            itemSlot.SetItemController(itemController);
             itemModel.itemName = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemName;
             itemModel.itemWeight = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemWeight;
             itemSlot.itemImage.sprite = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemSprite;

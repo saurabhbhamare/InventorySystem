@@ -32,6 +32,8 @@ public class ItemController
     }
     public void HandleInventoryItemRightClick()
     {
-
+        UIService.Instance.sellItemBox.gameObject.SetActive(true);
+        UIService.Instance.sellItemBox.UpdateItemSellBoxInfo(itemView.itemImage.sprite, itemModel.itemQuantity, itemModel.itemName);
+        UIService.Instance.sellItemBox.SetItemModelForSellBox(itemModel);
     }
 }

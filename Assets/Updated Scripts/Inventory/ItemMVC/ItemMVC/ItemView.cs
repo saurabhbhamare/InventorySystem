@@ -10,22 +10,15 @@ public class ItemView : MonoBehaviour,IPointerClickHandler
      public  TextMeshProUGUI itemQuantityText;
      public Image itemImage;
      public ItemController itemController;
-   //  private bool isDescriptionPanelActive = false;
-   //  private bool isItemSellBoxPanelActive = false;
     [SerializeField] private InventoryItemSellBox inventoryItemSellBox; // created a new inv sell box 
     private void Awake()
     {
         itemQuantityText.text = 1.ToString();
     }
-    private void Start()
-    {
-        //EventService.Instance.OnLeftClickInventoryItem += HandleLeftClickOnItem;
-    }
     public void OnPointerClick(PointerEventData eventData)
     {
         if(eventData.button == PointerEventData.InputButton.Left)
         {
-            //EventService.Instance.OnLeftClickInventoryItem?.Invoke();
             HandleLeftClickOnItem();
         }
         if (eventData.button == PointerEventData.InputButton.Right)
@@ -49,13 +42,14 @@ public class ItemView : MonoBehaviour,IPointerClickHandler
     }
     public void HandleRightClickOnItem()
     {
-        UIService.Instance.sellItemBox.gameObject.SetActive(true);
-        UIService.Instance.sellItemBox.UpdateItemSellBoxInfo(itemImage.sprite, GetItemController().GetItemModel().itemQuantity, GetItemController().GetItemModel().itemName);
-        UIService.Instance.sellItemBox.SetItemModelForSellBox(this.GetItemController().GetItemModel());
-    //    itemController.HandleInventoryItemLeftClick();
+        //UIService.Instance.sellItemBox.gameObject.SetActive(true);
+        //UIService.Instance.sellItemBox.UpdateItemSellBoxInfo(itemImage.sprite, GetItemController().GetItemModel().itemQuantity, GetItemController().GetItemModel().itemName);
+        //UIService.Instance.sellItemBox.SetItemModelForSellBox(this.GetItemController().GetItemModel());
+         itemController.HandleInventoryItemRightClick();
     }
     public void SetItemController(ItemController itemController)
     {
         this.itemController = itemController;
     }
 }
+ 
