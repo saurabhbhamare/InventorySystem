@@ -13,10 +13,7 @@ public class InventoryView : MonoBehaviour
     {
         Debug.Log("created a inventory view");
     }
-    public InventoryController GetInventoryController()
-    {
-        return inventoryController;
-    }
+    public InventoryController GetInventoryController() => inventoryController;
     public void SetInventoryController(InventoryController inventoryController)
     {
         this.inventoryController = inventoryController; 

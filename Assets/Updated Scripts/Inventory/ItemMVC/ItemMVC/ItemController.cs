@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemController
 {
-    public ItemView itemView;
+    public ItemView itemView; // changed to private
     private ItemModel itemModel;
 
     public ItemController(ItemView itemView, ItemModel itemModel)
@@ -15,8 +15,6 @@ public class ItemController
     public void UpdateItemSlotUI()
     {
         itemView.itemQuantityText.text = itemModel.itemQuantity.ToString();
-        Debug.Log("running quantity update func");
-
     }
     public ItemModel GetItemModel()
     {

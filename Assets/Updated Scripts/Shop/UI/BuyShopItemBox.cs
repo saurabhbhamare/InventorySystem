@@ -11,6 +11,7 @@ public class BuyShopItemBox : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemBuyQuantityText;
     [SerializeField] private TextMeshProUGUI itemNameText;
     private ShopItem shopItem;
+    [SerializeField] private ItemView itemView;    //added after updating the controller
 
 
     private void Start()
@@ -56,8 +57,9 @@ public class BuyShopItemBox : MonoBehaviour
             shopItem.itemQuantity -= itemBuyQuantity;
             // itemBuyQuantityText.text = shopItem.itemQuantity.ToString();
             shopItem.itemQuantityText.text = shopItem.itemQuantity.ToString();
+           InventoryService.Instance.GetInventoryView().inventoryController.AddItemsFromTheShop(shopItem.itemID, itemBuyQuantity , itemView);
             this.gameObject.SetActive(false);
         }
 
-    
+     
 }

@@ -52,4 +52,5 @@ public class ItemView : MonoBehaviour,IPointerClickHandler
         this.itemController = itemController;
     }
 }
+
  

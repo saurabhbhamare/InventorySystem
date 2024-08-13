@@ -601,7 +601,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 52190289}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999154
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1329,7 +1329,6 @@ MonoBehaviour:
   sellBoxItemImage: {fileID: 589407957}
   itemNameText: {fileID: 1196744319}
   itemQuantityText: {fileID: 1674368762}
-  itemSellQuantity: 0
 --- !u!1 &399551931
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,7 +1833,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000045759472, y: -0.000018567}
+  m_AnchoredPosition: {x: 0.000016212463, y: -0.000018567}
   m_SizeDelta: {x: -1564.699, y: 416.6}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &484789800
@@ -2808,9 +2807,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyItemImage: {fileID: 1098670727}
-  itemBuyQuantity: 0
   itemBuyQuantityText: {fileID: 1444695259}
   itemNameText: {fileID: 1019532138}
+  itemView: {fileID: 3225657359502408778, guid: 556ef6240043a984d9cd16713e633948, type: 3}
 --- !u!1 &833345228
 GameObject:
   m_ObjectHideFlags: 0
@@ -3428,7 +3427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c4ce72d15b5844bb026ecb6b4c9df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pCurrency: 0
   playerCurrencyText: {fileID: 1107020588}
 --- !u!1 &1019532136
 GameObject:

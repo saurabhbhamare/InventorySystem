@@ -6,11 +6,13 @@ public class Currency : MonoBehaviour
 {
     private int pCurrency;
     [SerializeField] private TextMeshProUGUI playerCurrencyText; 
+        
     
     public void IncreaseCoinValue(int currency)
     {
         pCurrency += currency;
         UpdatePlayerCurrency();
+
     }
     public void DecreaseCoinValue(int currency)
     {
@@ -22,3 +24,6 @@ public class Currency : MonoBehaviour
         playerCurrencyText.text = pCurrency.ToString();
     }
 }
+
+
+

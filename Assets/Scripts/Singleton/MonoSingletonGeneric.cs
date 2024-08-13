@@ -5,6 +5,8 @@ public class MonoSingletonGeneric<T> : MonoBehaviour where T : MonoSingletonGene
     public static T Instance { get { return instance; } }
     private static T instance;
 
+    public int GetPlayerCurrency() => 24;
+  
     private void Awake()
     {
         if (instance == null)
