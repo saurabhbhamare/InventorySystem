@@ -21,7 +21,7 @@ public class ShopItem : MonoBehaviour,IPointerClickHandler
        // itemImage.sprite = InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemSprite;
         itemQuantity = 999;
         itemQuantityText.text = itemQuantity.ToString();
-        buyingPriceText.text = InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemSellingPrice.ToString();
+        buyingPriceText.text = InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemBuyingPrice.ToString();
     }
     public void OnPointerClick(PointerEventData eventData)
     {

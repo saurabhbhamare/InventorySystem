@@ -15,7 +15,8 @@ public class ItemModel
     private bool isItemSellBoxPanelActive = false;
     public ItemModel()
     {
-        itemQuantity = 1; 
+          //itemQuantity = 1; 
+          itemQuantity = 0; 
     }
     public void SetItemController(ItemController itemController)
     {

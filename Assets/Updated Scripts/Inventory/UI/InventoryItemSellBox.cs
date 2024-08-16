@@ -69,7 +69,5 @@ public class InventoryItemSellBox : MonoBehaviour
         float updatedItemWeight = InventoryService.Instance.GetInventoryView().GetInventoryController().inventoryModel.inventoryWeight;
         InventoryService.Instance.GetInventoryView().GetInventoryController().UpdateInventoryWeight(updatedItemWeight);
         UIService.Instance.playerCurrency.IncreaseCoinValue(itemSellQuantity * itemModel.itemSellingPrice);
-
-
     }
 }

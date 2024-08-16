@@ -12,6 +12,7 @@ public class BuyShopItemBox : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemNameText;
     private ShopItem shopItem;
     [SerializeField] private ItemView itemView;    //added after updating the controller
+    [SerializeField] private Currency currency;
 
 
     private void Start()
@@ -54,11 +55,24 @@ public class BuyShopItemBox : MonoBehaviour
     }
         public void BuyItemButton()
         {
+        int selectedItemsPrice = InventoryService.Instance.GetInventoryView().GetInventoryController().inventoryModel.GetItemSOList().InventoryItems[shopItem.itemID].ItemBuyingPrice * itemBuyQuantity;
+      if (currency.GetPlayerCurrency() >= InventoryService.Instance.GetInventoryView().GetInventoryController().inventoryModel.GetItemSOList().InventoryItems[shopItem.itemID].ItemBuyingPrice*itemBuyQuantity)
+        {
             shopItem.itemQuantity -= itemBuyQuantity;
+            int itemWeight = (int)InventoryService.Instance.GetInventoryView().GetInventoryController().inventoryModel.GetItemSOList().InventoryItems[shopItem.itemID].ItemWeight * itemBuyQuantity;
             // itemBuyQuantityText.text = shopItem.itemQuantity.ToString();
             shopItem.itemQuantityText.text = shopItem.itemQuantity.ToString();
-           InventoryService.Instance.GetInventoryView().inventoryController.AddItemsFromTheShop(shopItem.itemID, itemBuyQuantity , itemView);
+            InventoryService.Instance.GetInventoryView().GetInventoryController().AddItemToTheInventory(itemView, SpawnObjectType.SHOP, shopItem.itemID, itemBuyQuantity);
+          //  InventoryService.Instance.GetInventoryView().
+            currency.UpdateCurrencyAfterBuyingItems(selectedItemsPrice);
+        //    InventoryService.Instance.GetInventoryView().inven
             this.gameObject.SetActive(false);
+            return;
+        }
+        Debug.Log("You don’t have enough money.");
+         //  InventoryService.Instance.GetInventoryView().inventoryController.AddItemsFromTheShop(shopItem.itemID, itemBuyQuantity , itemView);
+
+
         }
 
      

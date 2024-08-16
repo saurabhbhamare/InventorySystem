@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro; 
 public class Currency : MonoBehaviour
 {
-    private int pCurrency;
+    private int pCurrency=0;
     [SerializeField] private TextMeshProUGUI playerCurrencyText; 
         
     
@@ -19,10 +19,21 @@ public class Currency : MonoBehaviour
         pCurrency -= currency;
         UpdatePlayerCurrency();
     }
-    private void UpdatePlayerCurrency()
+    public void UpdatePlayerCurrency()
     {
         playerCurrencyText.text = pCurrency.ToString();
     }
+    public int GetPlayerCurrency()
+    {
+        return pCurrency;
+    }
+    public void UpdateCurrencyAfterBuyingItems(int updatedCurrency)
+    {
+        pCurrency -= updatedCurrency;
+        UpdatePlayerCurrency();
+
+    }
+
 }
 
 
