@@ -22,19 +22,16 @@ public class ShopController
             {
                 randomItemID = Random.Range(0, 19);
             } while (uniqueNumbers.Contains(randomItemID));
-          //  int randomItemID = Random.Range(0, 19);
-           ShopItem shopItemSlot = GameObject.Instantiate<ShopItem>(shopItem);
+       
+            ShopItem shopItemSlot = GameObject.Instantiate<ShopItem>(shopItem);
             shopItemSlot.gameObject.transform.SetParent(shopView.contentArea);
-          // ShopItem shopItemSlot = Instantiate(shopItem, shopView.contentArea); 
+     
            shopItemSlot.itemImage.sprite = InventoryService.Instance.GetItemSOList().InventoryItems[randomItemID].ItemSprite;
            shopItemSlot.itemID = randomItemID;
-            
-          shopModel.shopItemList.Add(shopItemSlot);
+           shopModel.shopItemList.Add(shopItemSlot);
+           uniqueNumbers.Add(randomItemID);
         }
     }
-    public void BuyItemFromTheShop()
-    {
-
-    }
+  
 
 }
