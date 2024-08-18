@@ -13,11 +13,12 @@ public class ItemModel
     public int itemSellingPrice;
     public bool isDescriptionPanelActive = false;
     private bool isItemSellBoxPanelActive = false;
-    public ItemModel()
-    {
-          //itemQuantity = 1; 
-          itemQuantity = 0; 
-    }
+    public int itemID;
+    //public ItemModel()
+    //{
+    //      //itemQuantity = 1; 
+    //      itemQuantity = 0; 
+    //}
     public void SetItemController(ItemController itemController)
     {
         this.itemController = itemController; 

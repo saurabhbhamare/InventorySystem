@@ -21,8 +21,6 @@ public class InventoryController
             int pickRandomItem = GenerateRandomItem();
              itemID = inventoryModel.GetItemSOList().InventoryItems[pickRandomItem].ItemID;
         }
-           
-
         if (inventoryModel.itemControllerList.TryGetValue(itemID, out ItemController existingSlot))
         {
             existingSlot.itemView.gameObject.SetActive(true);
@@ -30,10 +28,15 @@ public class InventoryController
             {
                 existingSlot.GetItemModel().itemQuantity += itemBuyQuantity;
             }
-            existingSlot.GetItemModel().itemQuantity++;
+            else  if(spawnObjectType == SpawnObjectType.INVENTORY)
+            {
+                existingSlot.GetItemModel().itemQuantity++;
+              
+            }
             existingSlot.itemView.itemQuantityText.text = existingSlot.GetItemModel().itemQuantity.ToString();
             this.inventoryModel.inventoryWeight += inventoryModel.itemSOList.InventoryItems[itemID].ItemWeight;
             UpdateInventoryWeight(inventoryModel.inventoryWeight);
+
         }
         else
         {
@@ -44,12 +47,13 @@ public class InventoryController
             itemSlot.SetItemController(itemController);
             if (spawnObjectType == SpawnObjectType.SHOP)
             {
-                itemModel.itemQuantity += itemBuyQuantity;
+               itemModel.itemQuantity += itemBuyQuantity;
                 itemSlot.itemQuantityText.text = itemModel.itemQuantity.ToString();
             }
             else
             {
                 itemModel.itemQuantity++;
+                Debug.Log("running else statement as well");
             }
            
             itemModel.itemName = inventoryModel.GetItemSOList().InventoryItems[itemID].ItemName;
@@ -58,6 +62,7 @@ public class InventoryController
             itemModel.itemDescription = inventoryModel.GetItemSOList().InventoryItems[itemID].ItemDescription;
             itemModel.itemBuyingPrice = inventoryModel.GetItemSOList().InventoryItems[itemID].ItemBuyingPrice;
             itemModel.itemSellingPrice = inventoryModel.GetItemSOList().InventoryItems[itemID].ItemSellingPrice;
+            itemModel.itemID = itemID;
             inventoryModel.itemControllerList.Add(itemID, itemController);
 
             itemSlot.transform.SetParent(inventoryView.parentTransform.transform, false);

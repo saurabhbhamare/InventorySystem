@@ -6,8 +6,6 @@ public class Currency : MonoBehaviour
 {
     private int pCurrency=0;
     [SerializeField] private TextMeshProUGUI playerCurrencyText; 
-        
-    
     public void IncreaseCoinValue(int currency)
     {
         pCurrency += currency;

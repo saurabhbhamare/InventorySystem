@@ -57,9 +57,10 @@ public class InventoryItemSellBox : MonoBehaviour
      {
         float decreasedItemWeight; 
         itemModel.itemQuantity -= itemSellQuantity;
+      //  InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemControllerList.ContainsKey(itemModel.itemID);
         if(itemModel.itemQuantity == 0)
         {
-            itemModel.GetItemController().itemView.gameObject.SetActive(false);
+            itemModel.GetItemController().itemView.gameObject.SetActive(false);  //old
         }
         decreasedItemWeight = itemModel.itemWeight * itemSellQuantity;
         Debug.Log("weight which is going to be decreased is " + decreasedItemWeight);

@@ -34,7 +34,6 @@ public class BuyShopItemBox : MonoBehaviour
     }
     public void IncreaseItemBuyQuantity()
     {
-      
         itemBuyQuantity++;
         itemBuyQuantityText.text = itemBuyQuantity.ToString();
         //sellQuantity =
@@ -52,6 +51,8 @@ public class BuyShopItemBox : MonoBehaviour
     public void CloseShopItemBuyBox()
     {
         this.gameObject.SetActive(false);
+        itemBuyQuantity = 1;
+        itemBuyQuantityText.text = itemBuyQuantity.ToString();
     }
         public void BuyItemButton()
         {
@@ -63,17 +64,16 @@ public class BuyShopItemBox : MonoBehaviour
             // itemBuyQuantityText.text = shopItem.itemQuantity.ToString();
             shopItem.itemQuantityText.text = shopItem.itemQuantity.ToString();
             InventoryService.Instance.GetInventoryView().GetInventoryController().AddItemToTheInventory(itemView, SpawnObjectType.SHOP, shopItem.itemID, itemBuyQuantity);
+            InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.inventoryWeight += itemWeight; //new
+            InventoryService.Instance.GetInventoryView().GetInventoryController().UpdateInventoryWeight(InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.inventoryWeight); //new 
+
+
           //  InventoryService.Instance.GetInventoryView().
             currency.UpdateCurrencyAfterBuyingItems(selectedItemsPrice);
-        //    InventoryService.Instance.GetInventoryView().inven
             this.gameObject.SetActive(false);
             return;
         }
         Debug.Log("You don’t have enough money.");
          //  InventoryService.Instance.GetInventoryView().inventoryController.AddItemsFromTheShop(shopItem.itemID, itemBuyQuantity , itemView);
-
-
         }
-
-     
 }
