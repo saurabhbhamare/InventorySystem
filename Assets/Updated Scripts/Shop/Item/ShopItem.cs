@@ -18,10 +18,9 @@ public class ShopItem : MonoBehaviour,IPointerClickHandler
 
     private void Start()
     {
-       // itemImage.sprite = InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemSprite;
         itemQuantity = 999;
         itemQuantityText.text = itemQuantity.ToString();
-        buyingPriceText.text = InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemBuyingPrice.ToString();
+        buyingPriceText.text = " GC "+ InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemBuyingPrice.ToString();
     }
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -31,7 +30,6 @@ public class ShopItem : MonoBehaviour,IPointerClickHandler
             ShopService.Instance.buyShopItemBox.GetBuyItemImage().sprite = InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemSprite;
             ShopService.Instance.buyShopItemBox.GetItemNameText().text = InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemName.ToString();
             ShopService.Instance.buyShopItemBox.SetShopItem(this);
-            
         }
     }
     public int GetItemQuantity()

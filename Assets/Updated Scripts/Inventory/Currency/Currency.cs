@@ -10,7 +10,6 @@ public class Currency : MonoBehaviour
     {
         pCurrency += currency;
         UpdatePlayerCurrency();
-
     }
     public void DecreaseCoinValue(int currency)
     {
@@ -29,9 +28,7 @@ public class Currency : MonoBehaviour
     {
         pCurrency -= updatedCurrency;
         UpdatePlayerCurrency();
-
     }
-
 }
 
 

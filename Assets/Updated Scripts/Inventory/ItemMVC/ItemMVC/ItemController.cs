@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemController
 {
-    public ItemView itemView; // changed to private
+    public ItemView itemView;
     private ItemModel itemModel;
 
     public ItemController(ItemView itemView, ItemModel itemModel)

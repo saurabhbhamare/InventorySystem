@@ -14,11 +14,7 @@ public class ItemModel
     public bool isDescriptionPanelActive = false;
     private bool isItemSellBoxPanelActive = false;
     public int itemID;
-    //public ItemModel()
-    //{
-    //      //itemQuantity = 1; 
-    //      itemQuantity = 0; 
-    //}
+
     public void SetItemController(ItemController itemController)
     {
         this.itemController = itemController; 

@@ -8,11 +8,6 @@ public class InventoryView : MonoBehaviour
     public InventoryController inventoryController;
     public  GameObject parentTransform;
     [SerializeField] private TextMeshProUGUI inventoryWeightText;
-
-    public InventoryView()
-    {
-        Debug.Log("created a inventory view");
-    }
     public InventoryController GetInventoryController() => inventoryController;
     public void SetInventoryController(InventoryController inventoryController)
     {

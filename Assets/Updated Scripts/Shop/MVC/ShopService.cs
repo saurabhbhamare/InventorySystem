@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShopService : MonoSingletonGeneric<ShopService>
 {
-    //public ShopDescriptionPanel shopDescriptionPanel;
     [SerializeField] private ShopView shopView; 
     public BuyShopItemBox buyShopItemBox; 
     public ShopItem shopItem; 

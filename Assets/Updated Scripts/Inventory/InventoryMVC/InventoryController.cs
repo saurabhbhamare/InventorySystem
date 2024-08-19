@@ -13,7 +13,6 @@ public class InventoryController
     }
     public void AddItemToTheInventory(ItemView itemView, SpawnObjectType spawnObjectType, int itemIDForShop, int itemBuyQuantity)
     {
-        //Common function for both inventory and shop 
         int itemID=itemIDForShop;
 
         if (spawnObjectType == SpawnObjectType.INVENTORY)
@@ -26,17 +25,17 @@ public class InventoryController
             existingSlot.itemView.gameObject.SetActive(true);
             if(spawnObjectType == SpawnObjectType.SHOP)
             {
-                existingSlot.GetItemModel().itemQuantity += itemBuyQuantity;
+               existingSlot.GetItemModel().itemQuantity += itemBuyQuantity;
+               this.inventoryModel.inventoryWeight += inventoryModel.itemSOList.InventoryItems[itemIDForShop].ItemWeight* itemBuyQuantity;
+             UpdateInventoryWeight(inventoryModel.inventoryWeight);
             }
             else  if(spawnObjectType == SpawnObjectType.INVENTORY)
             {
                 existingSlot.GetItemModel().itemQuantity++;
-              
+                this.inventoryModel.inventoryWeight += inventoryModel.itemSOList.InventoryItems[itemID].ItemWeight;
+                UpdateInventoryWeight(inventoryModel.inventoryWeight);
             }
             existingSlot.itemView.itemQuantityText.text = existingSlot.GetItemModel().itemQuantity.ToString();
-            this.inventoryModel.inventoryWeight += inventoryModel.itemSOList.InventoryItems[itemID].ItemWeight;
-            UpdateInventoryWeight(inventoryModel.inventoryWeight);
-
         }
         else
         {
@@ -67,16 +66,21 @@ public class InventoryController
 
             itemSlot.transform.SetParent(inventoryView.parentTransform.transform, false);
             itemSlot.transform.position = inventoryView.parentTransform.transform.position;
-            this.inventoryModel.inventoryWeight += inventoryModel.itemSOList.InventoryItems[itemID].ItemWeight;
+            if (spawnObjectType == SpawnObjectType.SHOP)
+            {
+                this.inventoryModel.inventoryWeight += itemModel.itemWeight * itemBuyQuantity;
+            }
+            else if(spawnObjectType == SpawnObjectType.INVENTORY)
+            {
+                this.inventoryModel.inventoryWeight += itemModel.itemWeight;
+            }
             UpdateInventoryWeight(inventoryModel.inventoryWeight);
-
         }
     }
     public void AddShopItems()
     {
         int itemId  = GenerateRandomItem();
         ItemView itemView = new ItemView();
-        //AddItemToTheInventory(itemId,itemView);
     }
     private int GenerateRandomItem()
     {
@@ -86,9 +90,5 @@ public class InventoryController
     public void UpdateInventoryWeight(float itemWeight)
     {
         inventoryView.GetInventoryWeightTextGUI().text = "Weight : "+itemWeight.ToString();
-    }
-    public void UpdateInventoryWeightUsingShopItems()
-    {
-        
     }
 }

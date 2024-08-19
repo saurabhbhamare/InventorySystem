@@ -35,9 +35,7 @@ public class InventoryItemSellBox : MonoBehaviour
             return; 
         }   
         itemSellQuantity++;
-      
         itemQuantityText.text = itemSellQuantity.ToString();
-        //sellQuantity = 
     }
     public void DecreaseItemSellQuantity()
     {
@@ -57,18 +55,17 @@ public class InventoryItemSellBox : MonoBehaviour
      {
         float decreasedItemWeight; 
         itemModel.itemQuantity -= itemSellQuantity;
-      //  InventoryService.Instance.GetInventoryView().inventoryController.inventoryModel.itemControllerList.ContainsKey(itemModel.itemID);
         if(itemModel.itemQuantity == 0)
         {
             itemModel.GetItemController().itemView.gameObject.SetActive(false);  //old
         }
-        decreasedItemWeight = itemModel.itemWeight * itemSellQuantity;
-        Debug.Log("weight which is going to be decreased is " + decreasedItemWeight);
+         decreasedItemWeight = itemModel.itemWeight * itemSellQuantity;
         itemModel.GetItemController().itemView.itemQuantityText.text = itemModel.itemQuantity.ToString();
         this.gameObject.SetActive(false);
         InventoryService.Instance.GetInventoryView().GetInventoryController().inventoryModel.inventoryWeight -= decreasedItemWeight;
         float updatedItemWeight = InventoryService.Instance.GetInventoryView().GetInventoryController().inventoryModel.inventoryWeight;
         InventoryService.Instance.GetInventoryView().GetInventoryController().UpdateInventoryWeight(updatedItemWeight);
         UIService.Instance.playerCurrency.IncreaseCoinValue(itemSellQuantity * itemModel.itemSellingPrice);
+        UIService.Instance.itemDescriptionPanel.gameObject.SetActive(false); //new
     }
 }

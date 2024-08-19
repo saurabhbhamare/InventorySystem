@@ -7,17 +7,11 @@ public class MainMenuButtons : MonoBehaviour
 {
     [SerializeField] private GameObject inventory;
     [SerializeField] private GameObject shop;
-  //  [SerializeField] private GameObject info;
-  //  [SerializeField] private GameObject quit;
     bool inventoryRunning = false;
     bool shopRunning = false;
     private void Start()
     {
         inventory.SetActive(false);
-     //   shop.SetActive(false);
-     //   info.SetActive(false);
-     //   quit.SetActive(false);
-
     }
     public void DisplayInventory()
     {

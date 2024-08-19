@@ -10,7 +10,7 @@ public class ItemView : MonoBehaviour,IPointerClickHandler
      public  TextMeshProUGUI itemQuantityText;
      public Image itemImage;
      public ItemController itemController;
-    [SerializeField] private InventoryItemSellBox inventoryItemSellBox; // created a new inv sell box 
+    [SerializeField] private InventoryItemSellBox inventoryItemSellBox; 
     private void Awake()
     {
         itemQuantityText.text = 1.ToString();
@@ -32,19 +32,10 @@ public class ItemView : MonoBehaviour,IPointerClickHandler
     }
     public void HandleLeftClickOnItem()
     {
-        //itemController.GetItemModel().isDescriptionPanelActive = !itemController.GetItemModel().isDescriptionPanelActive;
-
-        //UIService.Instance.itemDescriptionPanel.gameObject.SetActive(itemController.GetItemModel().isDescriptionPanelActive);
-        //UIService.Instance.itemDescriptionPanel.UpdateItemDescriptionPanelInfo(this.GetItemController().GetItemModel().itemName,
-        //    itemImage.sprite, this.GetItemController().GetItemModel().itemDescription);
-
         itemController.HandleInventoryItemLeftClick();
     }
     public void HandleRightClickOnItem()
     {
-        //UIService.Instance.sellItemBox.gameObject.SetActive(true);
-        //UIService.Instance.sellItemBox.UpdateItemSellBoxInfo(itemImage.sprite, GetItemController().GetItemModel().itemQuantity, GetItemController().GetItemModel().itemName);
-        //UIService.Instance.sellItemBox.SetItemModelForSellBox(this.GetItemController().GetItemModel());
          itemController.HandleInventoryItemRightClick();
     }
     public void SetItemController(ItemController itemController)
