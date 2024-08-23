@@ -11,6 +11,5 @@ public class AddItemButton : MonoBehaviour
     public void AddItem(ItemView itemView)
     {
         inventoryView.GetInventoryController().AddItemToTheInventory(itemView,SpawnObjectType.INVENTORY,0,0); 
-    }
-      
+    }      
 }

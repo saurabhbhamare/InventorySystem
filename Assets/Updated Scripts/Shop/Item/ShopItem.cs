@@ -25,6 +25,7 @@ public class ShopItem : MonoBehaviour,IPointerClickHandler
     {
        if(eventData.button == PointerEventData.InputButton.Right)
         {
+            GameService.Instance.uiService.buyShopItemBox.gameObject.SetActive(true);
             GameService.Instance.uiService.buyShopItemBox.GetBuyItemImage().sprite = GameService.Instance.inventoryService.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemSprite;
             GameService.Instance.uiService.buyShopItemBox.GetItemNameText().text = GameService.Instance.inventoryService.GetInventoryView().inventoryController.inventoryModel.itemSOList.InventoryItems[itemID].ItemName.ToString();
             GameService.Instance.uiService.buyShopItemBox.SetShopItem(this);
