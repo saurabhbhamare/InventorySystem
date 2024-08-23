@@ -31,9 +31,6 @@ public class ShopItem : MonoBehaviour,IPointerClickHandler
             GameService.Instance.uiService.buyShopItemBox.SetShopItem(this);
         }
     }
-    public int GetItemQuantity()
-    {
-        return itemQuantity;
-    }
+    public int GetItemQuantity() => itemQuantity;
 }
 

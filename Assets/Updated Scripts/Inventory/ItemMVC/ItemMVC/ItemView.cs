@@ -19,25 +19,14 @@ public class ItemView : MonoBehaviour,IPointerClickHandler
     {
         if(eventData.button == PointerEventData.InputButton.Left)
         {
-            HandleLeftClickOnItem();
+            itemController.HandleInventoryItemLeftClick();
         }
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            HandleRightClickOnItem();
+            itemController.HandleInventoryItemRightClick();
         }
     }
-    public ItemController GetItemController()
-    {
-        return itemController;
-    }
-    public void HandleLeftClickOnItem()
-    {
-        itemController.HandleInventoryItemLeftClick();
-    }
-    public void HandleRightClickOnItem()
-    {
-         itemController.HandleInventoryItemRightClick();
-    }
+    public ItemController GetItemController() => itemController;
     public void SetItemController(ItemController itemController)
     {
         this.itemController = itemController;

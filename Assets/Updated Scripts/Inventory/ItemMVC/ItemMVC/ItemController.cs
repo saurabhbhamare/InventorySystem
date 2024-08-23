@@ -12,14 +12,8 @@ public class ItemController
         this.itemModel = itemModel;
         this.itemView = itemView;
     }
-    public void UpdateItemSlotUI()
-    {
-        itemView.itemQuantityText.text = itemModel.itemQuantity.ToString();
-    }
-    public ItemModel GetItemModel()
-    {
-        return itemModel;
-    }
+    public void UpdateItemSlotUI() => itemView.itemQuantityText.text = itemModel.itemQuantity.ToString();
+    public ItemModel GetItemModel() => itemModel;
     public void HandleInventoryItemLeftClick()
     {
         itemModel.isDescriptionPanelActive = !itemModel.isDescriptionPanelActive;

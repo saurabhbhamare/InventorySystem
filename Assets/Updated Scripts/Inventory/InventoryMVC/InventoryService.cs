@@ -16,13 +16,7 @@ public class InventoryService
         InventoryModel inventoryModel = new InventoryModel(itemSOList);
         InventoryController inventoryController = new InventoryController(inventoryModel, inventoryView,itemSOList); 
     }
-    public InventoryView GetInventoryView()
-    {
-        return inventoryView;
-    }
-    public ItemSOList GetItemSOList()
-    {
-        return itemSOList;
-    }
-
+    public InventoryView GetInventoryView() => inventoryView;
+    public ItemSOList GetItemSOList() => itemSOList;
+ 
 }

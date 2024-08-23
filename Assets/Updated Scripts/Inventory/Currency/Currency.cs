@@ -16,19 +16,13 @@ public class Currency : MonoBehaviour
         pCurrency -= currency;
         UpdatePlayerCurrency();
     }
-    public void UpdatePlayerCurrency()
-    {
-        playerCurrencyText.text = pCurrency.ToString();
-    }
-    public int GetPlayerCurrency()
-    {
-        return pCurrency;
-    }
     public void UpdateCurrencyAfterBuyingItems(int updatedCurrency)
     {
         pCurrency -= updatedCurrency;
         UpdatePlayerCurrency();
     }
+    public void UpdatePlayerCurrency() => playerCurrencyText.text = pCurrency.ToString(); 
+    public int GetPlayerCurrency() => pCurrency; 
 }
 
 

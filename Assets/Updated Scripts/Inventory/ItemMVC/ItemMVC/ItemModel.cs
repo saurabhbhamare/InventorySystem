@@ -19,12 +19,6 @@ public class ItemModel
     {
         this.itemController = itemController; 
     }
-    public ItemController GetItemController()
-    {
-        return this.itemController; 
-    }
-    public bool GetDescriptionPanelVisibilityStatus()
-    {
-        return isDescriptionPanelActive;
-    }
+    public ItemController GetItemController() => this.itemController; 
+    public bool GetDescriptionPanelVisibilityStatus() => isDescriptionPanelActive;
 }

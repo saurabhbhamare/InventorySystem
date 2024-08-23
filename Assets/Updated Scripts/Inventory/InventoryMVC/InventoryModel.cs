@@ -14,13 +14,9 @@ public class InventoryModel
         this.itemSOList = itemSOList;
         itemControllerList = new Dictionary<int, ItemController>();
     }
+    public ItemSOList GetItemSOList() => itemSOList;   
     public void SetInventoryController(InventoryController inventoryController)
     {
         this.inventoryController = inventoryController;
     }
-    public ItemSOList GetItemSOList()
-    {
-        return itemSOList;
-    }
-    
 }

@@ -9,12 +9,9 @@ public class InventoryView : MonoBehaviour
     public  GameObject parentTransform;
     [SerializeField] private TextMeshProUGUI inventoryWeightText;
     public InventoryController GetInventoryController() => inventoryController;
+    public TextMeshProUGUI GetInventoryWeightTextGUI() => inventoryWeightText;
     public void SetInventoryController(InventoryController inventoryController)
     {
         this.inventoryController = inventoryController; 
-    }
-    public TextMeshProUGUI GetInventoryWeightTextGUI()
-    {
-        return inventoryWeightText;
     }
 }
