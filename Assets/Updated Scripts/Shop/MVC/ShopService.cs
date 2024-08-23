@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopService : MonoSingletonGeneric<ShopService>
+public class ShopService
 {
-    [SerializeField] private ShopView shopView; 
-    public BuyShopItemBox buyShopItemBox; 
-    public ShopItem shopItem; 
-
-    public void Start()
+    private ShopView shopView;
+    private BuyShopItemBox buyShopItemBox;
+    private ShopItem shopItem;
+    public ShopService(ShopView showView, BuyShopItemBox buyShopItemBox,ShopItem shopItem)
     {
+        this.shopView = showView;
+        this.buyShopItemBox = buyShopItemBox;
+        this.shopItem = shopItem;
         CreateShopSystem();
     }
     private void CreateShopSystem()

@@ -23,15 +23,14 @@ public class ItemController
     public void HandleInventoryItemLeftClick()
     {
         itemModel.isDescriptionPanelActive = !itemModel.isDescriptionPanelActive;
-
-        UIService.Instance.itemDescriptionPanel.gameObject.SetActive(itemModel.isDescriptionPanelActive);
-        UIService.Instance.itemDescriptionPanel.UpdateItemDescriptionPanelInfo(itemModel.itemName,
-            itemView.itemImage.sprite, itemModel.itemDescription);
+        GameService.Instance.uiService.itemDescriptionPanel.gameObject.SetActive(itemModel.isDescriptionPanelActive);
+        GameService.Instance.uiService.itemDescriptionPanel.UpdateItemDescriptionPanelInfo(itemModel.itemName,
+        itemView.itemImage.sprite, itemModel.itemDescription);
     }
     public void HandleInventoryItemRightClick()
     {
-        UIService.Instance.sellItemBox.gameObject.SetActive(true);
-        UIService.Instance.sellItemBox.UpdateItemSellBoxInfo(itemView.itemImage.sprite, itemModel.itemQuantity, itemModel.itemName);
-        UIService.Instance.sellItemBox.SetItemModelForSellBox(itemModel);
+        GameService.Instance.uiService.sellItemBox.gameObject.SetActive(true);
+        GameService.Instance.uiService.sellItemBox.UpdateItemSellBoxInfo(itemView.itemImage.sprite, itemModel.itemQuantity, itemModel.itemName);
+        GameService.Instance.uiService.sellItemBox.SetItemModelForSellBox(itemModel);
     }
 }

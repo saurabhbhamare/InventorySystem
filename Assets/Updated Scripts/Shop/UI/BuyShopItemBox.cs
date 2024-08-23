@@ -13,8 +13,6 @@ public class BuyShopItemBox : MonoBehaviour
     private ShopItem shopItem;
     [SerializeField] private ItemView itemView;    //added after updating the controller
     [SerializeField] private Currency currency;
-
-
     private void Start()
     {
         itemBuyQuantity = 1;
@@ -36,7 +34,6 @@ public class BuyShopItemBox : MonoBehaviour
     {
         itemBuyQuantity++;
         itemBuyQuantityText.text = itemBuyQuantity.ToString();
-        //sellQuantity =
     }
     public void DecreaseItemBuyQuantity()
     {
@@ -56,13 +53,13 @@ public class BuyShopItemBox : MonoBehaviour
     }
         public void BuyItemButton()
         {
-        int selectedItemsPrice = InventoryService.Instance.GetInventoryView().GetInventoryController().inventoryModel.GetItemSOList().InventoryItems[shopItem.itemID].ItemBuyingPrice * itemBuyQuantity;
-      if (currency.GetPlayerCurrency() >= InventoryService.Instance.GetInventoryView().GetInventoryController().inventoryModel.GetItemSOList().InventoryItems[shopItem.itemID].ItemBuyingPrice*itemBuyQuantity)
+        int selectedItemsPrice = GameService.Instance.inventoryService.GetInventoryView().GetInventoryController().inventoryModel.GetItemSOList().InventoryItems[shopItem.itemID].ItemBuyingPrice * itemBuyQuantity;
+      if (currency.GetPlayerCurrency() >= GameService.Instance.inventoryService.GetInventoryView().GetInventoryController().inventoryModel.GetItemSOList().InventoryItems[shopItem.itemID].ItemBuyingPrice*itemBuyQuantity)
         {
             shopItem.itemQuantity -= itemBuyQuantity;
-            int itemWeight = (int)InventoryService.Instance.GetInventoryView().GetInventoryController().inventoryModel.GetItemSOList().InventoryItems[shopItem.itemID].ItemWeight * itemBuyQuantity;
+            int itemWeight = (int)GameService.Instance.inventoryService.GetInventoryView().GetInventoryController().inventoryModel.GetItemSOList().InventoryItems[shopItem.itemID].ItemWeight * itemBuyQuantity;
             shopItem.itemQuantityText.text = shopItem.itemQuantity.ToString();
-            InventoryService.Instance.GetInventoryView().GetInventoryController().AddItemToTheInventory(itemView, SpawnObjectType.SHOP, shopItem.itemID, itemBuyQuantity);
+            GameService.Instance.inventoryService.GetInventoryView().GetInventoryController().AddItemToTheInventory(itemView, SpawnObjectType.SHOP, shopItem.itemID, itemBuyQuantity);
             currency.UpdateCurrencyAfterBuyingItems(selectedItemsPrice);
             this.gameObject.SetActive(false);
             return;

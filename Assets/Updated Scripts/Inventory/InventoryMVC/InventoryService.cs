@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class InventoryService : MonoSingletonGeneric<InventoryService>
+public class InventoryService 
 {
-    [SerializeField] private InventoryView inventoryView;
-    [SerializeField] private ItemSOList itemSOList;
-    private void Start()
+    private InventoryView inventoryView;
+    private ItemSOList itemSOList;
+    public InventoryService(InventoryView inventoryView , ItemSOList itemSOList)
     {
+        this.inventoryView = inventoryView;
+        this.itemSOList = itemSOList;
         CreateInventory();
     }
     private void CreateInventory()

@@ -26,7 +26,7 @@ public class ShopController
             ShopItem shopItemSlot = GameObject.Instantiate<ShopItem>(shopItem);
             shopItemSlot.gameObject.transform.SetParent(shopView.contentArea);
      
-           shopItemSlot.itemImage.sprite = InventoryService.Instance.GetItemSOList().InventoryItems[randomItemID].ItemSprite;
+           shopItemSlot.itemImage.sprite = GameService.Instance.inventoryService.GetItemSOList().InventoryItems[randomItemID].ItemSprite;
            shopItemSlot.itemID = randomItemID;
            shopModel.shopItemList.Add(shopItemSlot);
            uniqueNumbers.Add(randomItemID);

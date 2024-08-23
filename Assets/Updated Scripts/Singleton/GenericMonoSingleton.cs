@@ -1,6 +1,6 @@
 using UnityEngine;
 using System;
-public class MonoSingletonGeneric<T> : MonoBehaviour where T : MonoSingletonGeneric<T>
+public class GenericMonoSingleton<T> : MonoBehaviour where T : GenericMonoSingleton<T>
 {
     public static T Instance { get { return instance; } }
     private static T instance;

@@ -13,7 +13,6 @@ public class ItemDescriptionPanelView : MonoBehaviour
     {
         this.itemName.text = itemName;
         this.itemImage.sprite = itemSprite;
-        this.itemDescriptiontext.text = itemDescription;
-            
+        this.itemDescriptiontext.text = itemDescription;    
     }
 }
